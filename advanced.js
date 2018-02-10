@@ -1,25 +1,25 @@
-// (function () {
+(function () {
 
-//   var input,
-//       submit,
-//       message,
-//       advancedDiv,
-//       errorText = "I don't understand you.",
-//       dunnoText = "I wasn't programmed to know that.",
-//       picture = null,
-//       greetings = ["hi", "sup", "hello", "hola", "wasup"];
+  var input = document.getElementById('axela-input'),
+      submit = document.getElementById('axela-submit'),
+      message = document.getElementById('axela-message'),
+      advancedDiv = document.getElementById('advanced'),
+      errorText = "I don't understand you.",
+      dunnoText = "I wasn't programmed to know that.",
+      picture = null,
+      greetings = ["hi", "sup", "hello", "hola", "wasup"];
 
-//   // Add event listeners to text input and submit button below
-//   input.addEventListener("keypress", checkKey);
-//   submit.addEventListener("click", processInput);
+  // Add event listeners to text input and submit button below
+  input.addEventListener("keypress", checkKey);
+  submit.addEventListener("click", processInput);
 
-//   // This function checks if the user has pressed "ENTER" on their keyboard.
-//   function checkKey(event) {
-//     var keyCode = event.which || event.keyCode;
-//     if(keyCode == "13") {
-//       processInput();
-//     }
-//   }
+  // This function checks if the user has pressed "ENTER" on their keyboard.
+  function checkKey(event) {
+    var keyCode = event.which || event.keyCode;
+    if(keyCode == "13") {
+      processInput();
+    }
+  }
 
   /*
    * processInput()
@@ -48,6 +48,46 @@
       the message element to errorText.
    */
 
+   function processInput(){
+    image = document.getElementById('pic')
+    if(advancedDiv.getElementsByTagName('img').length > 0){
+      advancedDiv.removeChild(image)
+    }
+    var words = input.value.toLowerCase().trim().split(" ");
+    document.getElementById('axela-input').value = ''
+    if(words.length == 1){
+      if(greetings.indexOf(words[0])>=0){
+        message.innerHTML = "Greetings!"
+        var working = "true"
+      }else{
+        message.innerHTML = "sorry, what?"
+      }
+    }else if(words.length == 2){
+      switch(words[0]) {
+        case "who":
+          who(words[1]);
+          break;
+        case "what":
+          what(words[1]);
+          break;
+        case "where":
+          where(words[1]);
+          break;
+        case "tell":
+          tell(words[1]);
+          break;
+        case "show":
+          show(words[1]);
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }else{
+        message.innerHTML = "sorry, what?"
+    }
+  }
+
+
   /*
    * who(word)
    * This function sets the innerHTML of the message element to specific text,
@@ -62,26 +102,127 @@
      dunnoText, NOT errorText (since it's not an error per se, Axela just
      doesn't know what they're referring to.)
    */
-
+    function who(word){
+      switch(word) {
+        case "you":
+          message.innerHTML = "You are you.";
+          break;
+        case "me":
+          message.innerHTML = "I am Axela.";
+          break;
+        case "president":
+          message.innerHTML = "Donald Trump";
+          break;
+        case "idris":
+          message.innerHTML = "A coach who teaches G1 coding.";
+          break;
+        case "andrea":
+          message.innerHTML = "Tweet Tweet.";
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }
   /*
    * what(word)
    * See above.
    */
+   function what(word){
+      switch(word) {
+        case "food":
+          message.innerHTML = "Yummy.";
+          break;
+        case "water":
+          message.innerHTML = "Not wet.";
+          break;
+        case "pizza":
+          message.innerHTML = "Something we have eaten too many times";
+          break;
+        case "google":
+          message.innerHTML = "A search engine and tech company.";
+          break;
+        case "bitch":
+          message.innerHTML = "A female dog.";
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }
 
   /*
    * where(word)
    * See above.
    */
-
+   function where(word){
+      switch(word) {
+        case "google":
+          message.innerHTML = "Goodle's best office is in NY.";
+          break;
+        case "dinner":
+          message.innerHTML = "On the table";
+          break;
+        case "gio":
+          message.innerHTML = "Late.";
+          break;
+        case "fish":
+          message.innerHTML = "The ocean";
+          break;
+        case "dog":
+          message.innerHTML = "In the dog house.";
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }
   /*
    * tell(word)
    * See above.
    */
-
+   function tell(word){
+      switch(word) {
+        case "google":
+          message.innerHTML = "Google's best office is in NY.";
+          break;
+        case "dinner":
+          message.innerHTML = "On the table";
+          break;
+        case "gio":
+          message.innerHTML = "Late.";
+          break;
+        case "fish":
+          message.innerHTML = "The ocean";
+          break;
+        case "dog":
+          message.innerHTML = "In the dog house.";
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }
   /*
    * show(word)
    * See above.
    */
+   function show(word){
+      switch(word) {
+        case "me":
+          message.innerHTML = "Open photobooth.";
+          break;
+        case "you":
+          message.innerHTML = "Sorry you can never ever see me.";
+          break;
+        case "tree":
+          message.innerHTML = "Look out the window.";
+          break;
+        case "food":
+          message.innerHTML = "Check the refrigerator.";
+          break;
+        case "floor":
+          message.innerHTML = "Look down.";
+          break;
+        default:
+          message.innerHTML = "sorry, what?";
+      }
+    }
 
-
-// })();
+})();
