@@ -1,8 +1,8 @@
 (function () {
 
-  var input,
-      submit,
-      message,
+  var input = document.getElementById('iris-input'),
+      submit = document.getElementById('iris-submit'),
+      message = document.getElementById('iris-message'),
       validInputs = [
         "Where do you live?",
         "What are you?",
@@ -17,7 +17,8 @@
         "What do you call a swindler going down some stairs? <br>Condescending. Ha!"];
 
   // Add event listeners to text input and submit button below
-
+  input.addEventListener("keypress", checkKey);
+  submit.addEventListener("click", processInput);
 
   // This function checks if the user has pressed "ENTER" on their keyboard.
   function checkKey(event) {
@@ -41,5 +42,19 @@
    *  validInputs array), the response would be "42. Duh" (index 3 in the
    *  responses array).
    */
+
+   function processInput(){
+    var currentInput = document.getElementById('iris-input').value
+    document.getElementById('iris-input').value = ''
+    if(validInputs.indexOf(currentInput)>=0){
+      message.innerHTML = responses[validInputs.indexOf(currentInput)]
+      var working = "true"
+    }else{
+      message.innerHTML = "Sorry, I don't understand you."
+    }
+    
+   }
+
+
 
 })();
